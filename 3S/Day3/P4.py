@@ -1,4 +1,3 @@
-
 """
 P4.py — LangChain PromptTemplate
 
