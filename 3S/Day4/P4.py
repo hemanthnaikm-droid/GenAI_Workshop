@@ -38,6 +38,7 @@ chain = prompt | llm
 # Dictionary to hold the in-memory chat histories for different sessions
 store = {}
 
+
 def get_session_history(session_id: str) -> InMemoryChatMessageHistory:
     if session_id not in store:
         store[session_id] = InMemoryChatMessageHistory()
