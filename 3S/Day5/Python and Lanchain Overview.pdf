@@ -1,0 +1,58 @@
+Python and LangChain: A Practical Overview
+Python is a general-purpose programming language used to build web applications, automation tools,
+data-processing systems, and artificial intelligence solutions. Its readable syntax and extensive ecosystem
+make it suitable for both small scripts and large software projects.
+LangChain is a framework for developing applications powered by large language models (LLMs). It
+provides components that help applications connect models with prompts, retrieval systems, external tools,
+and information stored in files or databases.
+Python in Data Science and AI
+Python is widely used in data science and machine learning because developers can combine
+data-processing libraries, model libraries, and application code in one environment. Typical uses include
+analysing datasets, preparing documents, calling AI models, and building interfaces around
+model-generated results.
+• Data processing: reading, cleaning, transforming, and organising information.
+• Machine learning: preparing data and working with trained models.
+• Application development: connecting services, files, databases, and user interfaces.
+• Automation: performing repeatable tasks with scripts.
+LangChain and Large Language Model Applications
+A large language model generates responses from input text and its learned parameters. An application
+usually needs additional code to prepare instructions, supply relevant context, call the model, and present
+the result. LangChain provides reusable building blocks for these steps.
+• Prompts organise instructions and user input before a model call.
+• Document loaders read content from files and represent it as Document objects.
+• Text splitters divide long documents into smaller chunks for retrieval.
+• Embeddings represent text as numerical vectors that can be compared for similarity.
+• Retrievers find relevant chunks, which can be supplied to a model as context.
+Document Loading
+Document loading is often an early step in a retrieval-augmented generation (RAG) workflow. A loader
+reads a source file and returns one or more Document objects. Each object commonly contains
+page_content, which stores the extracted text, and metadata, which stores information about its source or
+location.
+Metadata can include a file path, page number, or other source details. Keeping this information allows an
+application to trace retrieved passages back to their origins.
+Common LangChain Document Loaders
+TextLoader reads a plain-text file and returns its contents in a Document object. Specifying UTF-8
+encoding helps the loader interpret common text characters consistently.
+PyPDFLoader extracts text from a PDF file. In its usual page-oriented mode, it returns a Document for each
+PDF page, with page-related information in the metadata.
+DirectoryLoader loads files from a directory by applying a file-matching pattern. For example, a pattern
+such as **/*.txt can select text files in the directory and its subdirectories. The loader can use
+TextLoader to read each file.
+From Files to Retrieval
+A typical document-processing pipeline follows these stages:
+• Load documents from text files, PDFs, or a directory.
+• Inspect the extracted text and metadata to confirm that the content was read correctly.
+• Split long documents into manageable chunks while preserving useful context.
+• Create embeddings for the chunks and store them in a vector database.
+• Retrieve relevant chunks for a user query and provide them to the language model.
+The quality of the final answer depends partly on the quality of the source documents. Scanned PDFs may
+require OCR, and complex layouts, tables, or unusual encodings may not extract perfectly. Always inspect
+loaded content before relying on it.
+Practical Notes
+• Install the community loader package and PDF parser required by the application.
+• Use a real, accessible PDF file path when loading PDF documents.
+• Check the number of returned documents and review their metadata and text.
+• For directory loading, confirm that the folder exists and that the matching pattern includes the intended
+files.
+• Avoid placing confidential documents in a processing pipeline unless the storage and model services are
+approved for that information.
