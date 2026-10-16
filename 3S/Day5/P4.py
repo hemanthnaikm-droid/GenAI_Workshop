@@ -35,8 +35,7 @@ print(f"  Preview  : {docs[0].page_content[:80]}")
 
 # ── Section B: PyPDFLoader ────────────────────────────────────────────────────
 
-PDF_PATH = r"/workspaces/GenAI_Workshop/3S/Day5/Python and Langchain Overview.pdf"  # replace with an actual PDF path before running
-
+PDF_PATH = r"/workspaces/GenAI_Workshop/3S/Day5/python_and_langchain_overview.pdf"
 if os.path.exists(PDF_PATH):
     loader = PyPDFLoader(PDF_PATH)
     pages  = loader.load()  # one Document per page; metadata includes 'page' number
